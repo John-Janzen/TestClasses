@@ -34,12 +34,14 @@
 - (void) update : (GLKMatrix4) projection : (GLKMatrix4) baseModelView : (float) time : (GLKMatrix4) matrix {
     [self initializeModelView];
     if ([_ID isEqualToString:@"Cube1"]) {
-        //_modelView = GLKMatrix4Rotate(_modelView, _rotation, 1.0f, -1.0f, 1.0f);
-        //_rotation += 0.5f * time;
+        _modelView = GLKMatrix4Rotate(_modelView, _rotation, 0.0f, 1.0f, 0.0f);
+        _rotation += -1.5f * time;
     } else if ([_ID isEqualToString:@"ChildCube"]) {
         _modelView = GLKMatrix4Rotate(_modelView, _rotation, 1.0f, 0.0f, 0.0f);
-        _modelView = GLKMatrix4Translate(_modelView, 0.0f, -1.0f, 0.0f);
         _rotation += 1.0f * time;
+    }  else if ([_ID isEqualToString:@"ChildCube2"]) {
+        _modelView = GLKMatrix4Rotate(_modelView, _rotation, 0.0f, 0.0f, 1.0f);
+        _rotation += 10.0f * time;
     }
     _modelView = GLKMatrix4Multiply(matrix, _modelView);
     

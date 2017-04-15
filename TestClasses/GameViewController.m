@@ -129,7 +129,10 @@ enum
 - (void) setupGameWorldObjects
 {
     NSMutableArray *objects = [[NSMutableArray alloc] init];
+    NSMutableArray *objects2 = [[NSMutableArray alloc] init];
     [objects addObject:[[Cube alloc] init : @"ChildCube" : GLKVector3Make(0.0f, 2.0f, 0.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init] : nil]];
+    [objects2 addObject:[[Cube alloc] init : @"ChildChildCube" : GLKVector3Make(0.0f, -2.0f, 0.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init] : nil]];
+    [objects addObject:[[Cube alloc] init : @"ChildCube2" : GLKVector3Make(0.0f, -2.0f, 0.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init] : objects2]];
     [GameWorldObjects addObject:[[Cube alloc] init : @"Cube1" : GLKVector3Make(0.0f, 0.0f, -4.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init]: objects]];
     
     for (GameObject *object in GameWorldObjects) {

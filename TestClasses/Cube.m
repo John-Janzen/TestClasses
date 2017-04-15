@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Cube.h"
 
-GLfloat gCubeVertexData[216] =
+GLfloat gCubeVertexData[] =
 {
     // Data layout for each line below is:
     // positionX, positionY, positionZ,     normalX, normalY, normalZ,
