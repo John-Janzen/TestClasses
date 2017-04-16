@@ -30,15 +30,42 @@
     return GLKMatrix4RotateZ(rotMatrix, _rot.z);
 }
 
+- (id) init {
+    self = [super init];
+    if (self) {
+        _direction = 0.5;
+    }
+    return self;
+}
+
 // Public Methods in Header File
 - (void) update : (GLKMatrix4) projection : (GLKMatrix4) baseModelView : (float) time : (GLKMatrix4) matrix {
     [self initializeModelView];
-    if ([_ID isEqualToString:@"Cube1"]) {
-        _modelView = GLKMatrix4Rotate(_modelView, _rotation, 0.0f, 1.0f, 0.0f);
-        _rotation += -1.5f * time;
-    } else if ([_ID isEqualToString:@"ChildCube"]) {
+    if ([_ID isEqualToString:@"RightWing"]) {
+        _modelView = GLKMatrix4Rotate(_modelView, _rotation, 0.0f, 0.0f, 1.0f);
+        if (_rotation >= 0.7f || _rotation <= 0.0f) {
+            _direction *= -1.0f;
+        }
+        _rotation += _direction * time;
+        if (_rotation > 0.7f) {
+            _rotation = 0.7f;
+        } else if (_rotation < 0.0f) {
+            _rotation = 0.0f;
+        }
+    } else if ([_ID isEqualToString:@"CharacterBody2"]) {
         _modelView = GLKMatrix4Rotate(_modelView, _rotation, 1.0f, 0.0f, 0.0f);
         _rotation += 1.0f * time;
+    } else if ([_ID isEqualToString:@"LeftWing"]) {
+        _modelView = GLKMatrix4Rotate(_modelView, _rotation, 0.0f, 0.0f, 1.0f);
+        if (_rotation >= 0.0f || _rotation <= -0.7f) {
+            _direction *= -1.0f;
+        }
+        _rotation += _direction * time;
+        if (_rotation > 0.0f) {
+            _rotation = 0.0f;
+        } else if (_rotation < -0.7f) {
+            _rotation = -0.7f;
+        }
     }
     
     _modelView = GLKMatrix4Multiply(matrix, _modelView);

@@ -11,10 +11,13 @@
 
 @implementation RenderClass
 
-- (id) init: (GLuint)texture {
+- (id) init: (GLuint)texture : (GLfloat*) verts : (GLuint) size : (GLuint) indicesNum {
     self = [super init];
     if (self) {
         _texture = texture;
+        _vertices = verts;
+        _sizeVertices = size * sizeof(GLfloat);
+        _indicesNum = indicesNum;
     }
     return self;
 }

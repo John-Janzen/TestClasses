@@ -22,6 +22,13 @@
 		ECBB8E761EA321F000AB993F /* OBJImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB8E741EA321F000AB993F /* OBJImporter.m */; };
 		ECBB8E791EA323C900AB993F /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E781EA323C900AB993F /* crate.jpg */; };
 		ECBB8E7B1EA332CE00AB993F /* noTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E7A1EA332CE00AB993F /* noTexture.jpg */; };
+		ECBB8E7E1EA333C700AB993F /* characterbody.obj in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E7D1EA333C700AB993F /* characterbody.obj */; };
+		ECBB8E801EA333CF00AB993F /* characterleftwing.obj in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E7F1EA333CF00AB993F /* characterleftwing.obj */; };
+		ECBB8E821EA333D400AB993F /* characterrightwing.obj in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E811EA333D400AB993F /* characterrightwing.obj */; };
+		ECBB8E841EA333DD00AB993F /* characterbody.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E831EA333DD00AB993F /* characterbody.jpg */; };
+		ECBB8E861EA333E200AB993F /* characterleftwing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E851EA333E200AB993F /* characterleftwing.jpg */; };
+		ECBB8E881EA333E800AB993F /* characterrightwing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E871EA333E800AB993F /* characterrightwing.jpg */; };
+		ECBB8E8A1EA3340900AB993F /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB8E891EA3340900AB993F /* Model.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +56,14 @@
 		ECBB8E751EA321F000AB993F /* OBJImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJImporter.h; sourceTree = "<group>"; };
 		ECBB8E781EA323C900AB993F /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
 		ECBB8E7A1EA332CE00AB993F /* noTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noTexture.jpg; sourceTree = "<group>"; };
+		ECBB8E7D1EA333C700AB993F /* characterbody.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = characterbody.obj; sourceTree = "<group>"; };
+		ECBB8E7F1EA333CF00AB993F /* characterleftwing.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = characterleftwing.obj; sourceTree = "<group>"; };
+		ECBB8E811EA333D400AB993F /* characterrightwing.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = characterrightwing.obj; sourceTree = "<group>"; };
+		ECBB8E831EA333DD00AB993F /* characterbody.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = characterbody.jpg; sourceTree = "<group>"; };
+		ECBB8E851EA333E200AB993F /* characterleftwing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = characterleftwing.jpg; sourceTree = "<group>"; };
+		ECBB8E871EA333E800AB993F /* characterrightwing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = characterrightwing.jpg; sourceTree = "<group>"; };
+		ECBB8E891EA3340900AB993F /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		ECBB8E8B1EA3341100AB993F /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +115,7 @@
 				ECBB8E6F1EA321B900AB993F /* TextureLoad.h */,
 				ECBB8E741EA321F000AB993F /* OBJImporter.m */,
 				ECBB8E751EA321F000AB993F /* OBJImporter.h */,
+				ECBB8E7C1EA3338A00AB993F /* OBJ Files */,
 				ECBB8E771EA323AA00AB993F /* Textures */,
 				136CD1D51EA2BB5000E28D78 /* Objects */,
 			);
@@ -119,6 +135,8 @@
 			children = (
 				136CD1D61EA2BB6700E28D78 /* Cube.m */,
 				136CD1D81EA2BB6D00E28D78 /* Cube.h */,
+				ECBB8E891EA3340900AB993F /* Model.m */,
+				ECBB8E8B1EA3341100AB993F /* Model.h */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -126,10 +144,23 @@
 		ECBB8E771EA323AA00AB993F /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				ECBB8E851EA333E200AB993F /* characterleftwing.jpg */,
+				ECBB8E871EA333E800AB993F /* characterrightwing.jpg */,
+				ECBB8E831EA333DD00AB993F /* characterbody.jpg */,
 				ECBB8E781EA323C900AB993F /* crate.jpg */,
 				ECBB8E7A1EA332CE00AB993F /* noTexture.jpg */,
 			);
 			name = Textures;
+			sourceTree = "<group>";
+		};
+		ECBB8E7C1EA3338A00AB993F /* OBJ Files */ = {
+			isa = PBXGroup;
+			children = (
+				ECBB8E7F1EA333CF00AB993F /* characterleftwing.obj */,
+				ECBB8E811EA333D400AB993F /* characterrightwing.obj */,
+				ECBB8E7D1EA333C700AB993F /* characterbody.obj */,
+			);
+			name = "OBJ Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +227,12 @@
 				ECBB8E7B1EA332CE00AB993F /* noTexture.jpg in Resources */,
 				136CD1C51EA29DE800E28D78 /* Assets.xcassets in Resources */,
 				ECBB8E791EA323C900AB993F /* crate.jpg in Resources */,
+				ECBB8E861EA333E200AB993F /* characterleftwing.jpg in Resources */,
+				ECBB8E881EA333E800AB993F /* characterrightwing.jpg in Resources */,
+				ECBB8E821EA333D400AB993F /* characterrightwing.obj in Resources */,
+				ECBB8E801EA333CF00AB993F /* characterleftwing.obj in Resources */,
+				ECBB8E7E1EA333C700AB993F /* characterbody.obj in Resources */,
+				ECBB8E841EA333DD00AB993F /* characterbody.jpg in Resources */,
 				136CD1C81EA29DE800E28D78 /* LaunchScreen.storyboard in Resources */,
 				136CD1BB1EA29DE800E28D78 /* Shader.fsh in Resources */,
 			);
@@ -211,6 +248,7 @@
 				136CD1D31EA29ED400E28D78 /* RenderClass.m in Sources */,
 				136CD1D01EA29E4C00E28D78 /* GameObject.m in Sources */,
 				136CD1B91EA29DE800E28D78 /* AppDelegate.m in Sources */,
+				ECBB8E8A1EA3340900AB993F /* Model.m in Sources */,
 				136CD1C01EA29DE800E28D78 /* GameViewController.m in Sources */,
 				ECBB8E721EA321B900AB993F /* TextureLoad.m in Sources */,
 				ECBB8E761EA321F000AB993F /* OBJImporter.m in Sources */,

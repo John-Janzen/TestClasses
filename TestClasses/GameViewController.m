@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import <OpenGLES/ES2/glext.h>
 #include "Cube.h"
+#include "Model.h"
 #include "TextureLoad.h"
 #include "OBJImporter.h"
 
@@ -69,6 +70,7 @@ enum
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
     textureLoader = [[TextureLoad alloc] init];
+    objImport = [[OBJImporter alloc] init];
     
     [self setupGL];
 }
@@ -139,17 +141,29 @@ enum
 - (void) setupGameWorldObjects
 {
     NSMutableArray *objects = [[NSMutableArray alloc] init];
-    [objects addObject:[[Cube alloc] init : @"ChildCube"
-                                          : GLKVector3Make(0.0f, 2.0f, 0.0f)
-                                          : GLKVector3Make(0.0f, 0.0f, 0.0f)
+    [objects addObject:[[Model alloc] init : @"LeftWing"
+                                          : GLKVector3Make(0.7f, 0.0f, 0.1f)
+                                          : GLKVector3Make(0.0f, 1.0f, 0.0f)
                                           : GLKVector3Make(1.0f, 1.0f, 1.0f)
-                                          : [[RenderClass alloc] init:[textureLoader loadTexture:@"noTexture.jpg"]]
+                                          : [[RenderClass alloc] init : [textureLoader loadTexture:@"characterleftwing.jpg"]
+                                                                      : [objImport customStringFromFile:@"characterleftwing" :@"obj"]
+                                                                      : objImport->_faces.count * 10 : objImport->_faces.count]
                                           : nil]];
-    [GameWorldObjects addObject:[[Cube alloc] init : @"Cube1"
+    [objects addObject:[[Model alloc] init : @"RightWing"
+                                           : GLKVector3Make(-0.8f, 0.0f, -0.1f)
+                                           : GLKVector3Make(0.0f, -1.0f, 0.0f)
+                                           : GLKVector3Make(1.0f, 1.0f, 1.0f)
+                                           : [[RenderClass alloc] init : [textureLoader loadTexture:@"characterrightwing.jpg"]
+                                                                       : [objImport customStringFromFile:@"characterrightwing" :@"obj"]
+                                                                       : objImport->_faces.count * 10 : objImport->_faces.count]
+                                           : nil]];
+    [GameWorldObjects addObject:[[Model alloc] init : @"CharacterBody"
                                                    : GLKVector3Make(0.0f, 0.0f, 0.0f)
-                                                   : GLKVector3Make(0.0f, 0.0f, 0.0f)
+                                                   : GLKVector3Make(M_PI_2, 0.0f, 0.0f)
                                                    : GLKVector3Make(1.0f, 1.0f, 1.0f)
-                                                   : [[RenderClass alloc] init: [textureLoader loadTexture:@"crate.jpg"]]
+                                                   : [[RenderClass alloc] init: [textureLoader loadTexture:@"characterbody.jpg"]
+                                                                              : [objImport customStringFromFile:@"characterbody" :@"obj"]
+                                                                              : objImport->_faces.count * 10 : objImport->_faces.count]
                                                    : objects]];
     
     for (GameObject *object in GameWorldObjects) {
@@ -166,7 +180,7 @@ enum
     float aspect = fabs(self.view.bounds.size.width / self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
     
-    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -4.0f);
+    GLKMatrix4 baseModelViewMatrix = GLKMatrix4MakeTranslation(0.0f, 0.0f, -10.0f);
     baseModelViewMatrix = GLKMatrix4Rotate(baseModelViewMatrix, _rotation, 0.0f, 1.0f, 0.0f);
     for (GameObject *object in GameWorldObjects) {
         [object update : projectionMatrix : baseModelViewMatrix : self.timeSinceLastUpdate : GLKMatrix4Identity];

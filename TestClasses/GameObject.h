@@ -17,7 +17,7 @@
     NSMutableArray *_childGameObjects;
     GLKVector3 _pos, _rot, _scale;
     GLKMatrix4 _modelView;
-    float _rotation;
+    float _rotation, _direction;
 }
 
 - (void) update : (GLKMatrix4) projection : (GLKMatrix4) baseModelView : (float) time : (GLKMatrix4) matrix;

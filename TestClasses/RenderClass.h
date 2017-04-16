@@ -21,7 +21,7 @@
     GLuint _vertexBuffer[1];
 }
 
-- (id) init : (GLuint) texture;
+- (id) init : (GLuint) texture : (GLfloat*) verts : (GLuint) size : (GLuint) indicesNum;
 
 #pragma mark - Getters
 - (GLfloat*) getVertices;
