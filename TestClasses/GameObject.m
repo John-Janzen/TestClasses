@@ -39,10 +39,8 @@
     } else if ([_ID isEqualToString:@"ChildCube"]) {
         _modelView = GLKMatrix4Rotate(_modelView, _rotation, 1.0f, 0.0f, 0.0f);
         _rotation += 1.0f * time;
-    }  else if ([_ID isEqualToString:@"ChildCube2"]) {
-        _modelView = GLKMatrix4Rotate(_modelView, _rotation, 0.0f, 0.0f, 1.0f);
-        _rotation += 10.0f * time;
     }
+    
     _modelView = GLKMatrix4Multiply(matrix, _modelView);
     
     if (_childGameObjects != nil) {
@@ -73,9 +71,11 @@
         glBufferData(GL_ARRAY_BUFFER, [_renderer getSizeOfVertices], [_renderer getVertices], GL_STATIC_DRAW);
         
         glEnableVertexAttribArray(GLKVertexAttribPosition);
-        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(0));
+        glVertexAttribPointer(GLKVertexAttribPosition, 4, GL_FLOAT, GL_FALSE, 40, BUFFER_OFFSET(0));
         glEnableVertexAttribArray(GLKVertexAttribNormal);
-        glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 24, BUFFER_OFFSET(12));
+        glVertexAttribPointer(GLKVertexAttribNormal, 4, GL_FLOAT, GL_FALSE, 40, BUFFER_OFFSET(16));
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 40, BUFFER_OFFSET(32));
         
         glBindVertexArrayOES(0);
     }

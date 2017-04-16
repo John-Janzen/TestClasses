@@ -18,6 +18,10 @@
 		136CD1D01EA29E4C00E28D78 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 136CD1CF1EA29E4C00E28D78 /* GameObject.m */; };
 		136CD1D31EA29ED400E28D78 /* RenderClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 136CD1D21EA29ED400E28D78 /* RenderClass.m */; };
 		136CD1D71EA2BB6700E28D78 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = 136CD1D61EA2BB6700E28D78 /* Cube.m */; };
+		ECBB8E721EA321B900AB993F /* TextureLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB8E701EA321B900AB993F /* TextureLoad.m */; };
+		ECBB8E761EA321F000AB993F /* OBJImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB8E741EA321F000AB993F /* OBJImporter.m */; };
+		ECBB8E791EA323C900AB993F /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E781EA323C900AB993F /* crate.jpg */; };
+		ECBB8E7B1EA332CE00AB993F /* noTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECBB8E7A1EA332CE00AB993F /* noTexture.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,12 @@
 		136CD1D41EA29EEA00E28D78 /* RenderClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderClass.h; sourceTree = "<group>"; };
 		136CD1D61EA2BB6700E28D78 /* Cube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
 		136CD1D81EA2BB6D00E28D78 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		ECBB8E6F1EA321B900AB993F /* TextureLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureLoad.h; sourceTree = "<group>"; };
+		ECBB8E701EA321B900AB993F /* TextureLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureLoad.m; sourceTree = "<group>"; };
+		ECBB8E741EA321F000AB993F /* OBJImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJImporter.m; sourceTree = "<group>"; };
+		ECBB8E751EA321F000AB993F /* OBJImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJImporter.h; sourceTree = "<group>"; };
+		ECBB8E781EA323C900AB993F /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
+		ECBB8E7A1EA332CE00AB993F /* noTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noTexture.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,11 @@
 				136CD1D11EA29E6300E28D78 /* GameObject.h */,
 				136CD1D21EA29ED400E28D78 /* RenderClass.m */,
 				136CD1D41EA29EEA00E28D78 /* RenderClass.h */,
+				ECBB8E701EA321B900AB993F /* TextureLoad.m */,
+				ECBB8E6F1EA321B900AB993F /* TextureLoad.h */,
+				ECBB8E741EA321F000AB993F /* OBJImporter.m */,
+				ECBB8E751EA321F000AB993F /* OBJImporter.h */,
+				ECBB8E771EA323AA00AB993F /* Textures */,
 				136CD1D51EA2BB5000E28D78 /* Objects */,
 			);
 			path = TestClasses;
@@ -106,6 +121,15 @@
 				136CD1D81EA2BB6D00E28D78 /* Cube.h */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		ECBB8E771EA323AA00AB993F /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				ECBB8E781EA323C900AB993F /* crate.jpg */,
+				ECBB8E7A1EA332CE00AB993F /* noTexture.jpg */,
+			);
+			name = Textures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +193,9 @@
 			files = (
 				136CD1C31EA29DE800E28D78 /* Main.storyboard in Resources */,
 				136CD1BD1EA29DE800E28D78 /* Shader.vsh in Resources */,
+				ECBB8E7B1EA332CE00AB993F /* noTexture.jpg in Resources */,
 				136CD1C51EA29DE800E28D78 /* Assets.xcassets in Resources */,
+				ECBB8E791EA323C900AB993F /* crate.jpg in Resources */,
 				136CD1C81EA29DE800E28D78 /* LaunchScreen.storyboard in Resources */,
 				136CD1BB1EA29DE800E28D78 /* Shader.fsh in Resources */,
 			);
@@ -186,6 +212,8 @@
 				136CD1D01EA29E4C00E28D78 /* GameObject.m in Sources */,
 				136CD1B91EA29DE800E28D78 /* AppDelegate.m in Sources */,
 				136CD1C01EA29DE800E28D78 /* GameViewController.m in Sources */,
+				ECBB8E721EA321B900AB993F /* TextureLoad.m in Sources */,
+				ECBB8E761EA321F000AB993F /* OBJImporter.m in Sources */,
 				136CD1D71EA2BB6700E28D78 /* Cube.m in Sources */,
 				136CD1B61EA29DE800E28D78 /* main.m in Sources */,
 			);
@@ -348,6 +376,7 @@
 				136CD1CE1EA29DE800E28D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

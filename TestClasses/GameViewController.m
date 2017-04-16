@@ -9,12 +9,15 @@
 #import "GameViewController.h"
 #import <OpenGLES/ES2/glext.h>
 #include "Cube.h"
+#include "TextureLoad.h"
+#include "OBJImporter.h"
 
 // Uniform index.
 enum
 {
     UNIFORM_MODELVIEWPROJECTION_MATRIX,
     UNIFORM_NORMAL_MATRIX,
+    UNIFORM_TEXTURE,
     NUM_UNIFORMS
 };
 GLint uniforms[NUM_UNIFORMS];
@@ -32,6 +35,9 @@ enum
     
     float _rotation;
     NSMutableArray *GameWorldObjects;
+    TextureLoad *textureLoader;
+    OBJImporter *objImport;
+    GLuint texture[1];
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -61,6 +67,8 @@ enum
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    textureLoader = [[TextureLoad alloc] init];
     
     [self setupGL];
 }
@@ -103,6 +111,8 @@ enum
     [self loadShaders];
     
     glEnable(GL_DEPTH_TEST);
+    glFrontFace(GL_CCW);
+    glEnable(GL_CULL_FACE);
     
     GameWorldObjects = [[NSMutableArray alloc] init];
     [self setupGameWorldObjects];
@@ -129,15 +139,24 @@ enum
 - (void) setupGameWorldObjects
 {
     NSMutableArray *objects = [[NSMutableArray alloc] init];
-    NSMutableArray *objects2 = [[NSMutableArray alloc] init];
-    [objects addObject:[[Cube alloc] init : @"ChildCube" : GLKVector3Make(0.0f, 2.0f, 0.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init] : nil]];
-    [objects2 addObject:[[Cube alloc] init : @"ChildChildCube" : GLKVector3Make(0.0f, -2.0f, 0.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init] : nil]];
-    [objects addObject:[[Cube alloc] init : @"ChildCube2" : GLKVector3Make(0.0f, -2.0f, 0.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init] : objects2]];
-    [GameWorldObjects addObject:[[Cube alloc] init : @"Cube1" : GLKVector3Make(0.0f, 0.0f, -4.0f) : GLKVector3Make(0.0f, 0.0f, 0.0f) : GLKVector3Make(1.0f, 1.0f, 1.0f) : [[RenderClass alloc] init]: objects]];
+    [objects addObject:[[Cube alloc] init : @"ChildCube"
+                                          : GLKVector3Make(0.0f, 2.0f, 0.0f)
+                                          : GLKVector3Make(0.0f, 0.0f, 0.0f)
+                                          : GLKVector3Make(1.0f, 1.0f, 1.0f)
+                                          : [[RenderClass alloc] init:[textureLoader loadTexture:@"noTexture.jpg"]]
+                                          : nil]];
+    [GameWorldObjects addObject:[[Cube alloc] init : @"Cube1"
+                                                   : GLKVector3Make(0.0f, 0.0f, 0.0f)
+                                                   : GLKVector3Make(0.0f, 0.0f, 0.0f)
+                                                   : GLKVector3Make(1.0f, 1.0f, 1.0f)
+                                                   : [[RenderClass alloc] init: [textureLoader loadTexture:@"crate.jpg"]]
+                                                   : objects]];
     
     for (GameObject *object in GameWorldObjects) {
         [object setupArrays];
     }
+    glActiveTexture(GL_TEXTURE0);
+    glUniform1i(uniforms[UNIFORM_TEXTURE], 0);
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
@@ -174,6 +193,8 @@ enum
         }
     }
     if ([object getRenderer]) {
+        glBindTexture(GL_TEXTURE_2D, [[object getRenderer] getTexture]);
+        
         glBindVertexArrayOES([object getRenderer]->_vertexArray);
         
         glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, [[object getRenderer] getModelProjection].m);
@@ -217,6 +238,7 @@ enum
     // This needs to be done prior to linking.
     glBindAttribLocation(_program, GLKVertexAttribPosition, "position");
     glBindAttribLocation(_program, GLKVertexAttribNormal, "normal");
+    glBindAttribLocation(_program, GLKVertexAttribTexCoord0, "TexCoordIn");
     
     // Link program.
     if (![self linkProgram:_program]) {
@@ -241,6 +263,7 @@ enum
     // Get uniform locations.
     uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX] = glGetUniformLocation(_program, "modelViewProjectionMatrix");
     uniforms[UNIFORM_NORMAL_MATRIX] = glGetUniformLocation(_program, "normalMatrix");
+    uniforms[UNIFORM_TEXTURE] = glGetUniformLocation(_program, "Texture");
     
     // Release vertex and fragment shaders.
     if (vertShader) {

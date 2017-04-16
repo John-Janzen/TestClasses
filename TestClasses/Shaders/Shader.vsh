@@ -5,10 +5,12 @@
 //  Created by John Janzen on 2017-04-15.
 //  Copyright © 2017 John Janzen. All rights reserved.
 //
-
+precision mediump float;
 attribute vec4 position;
 attribute vec3 normal;
+attribute vec2 TexCoordIn;
 
+varying vec2 TexCoordOut;
 varying lowp vec4 colorVarying;
 
 uniform mat4 modelViewProjectionMatrix;
@@ -23,6 +25,7 @@ void main()
     float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPosition)));
                  
     colorVarying = diffuseColor * nDotVP;
+    TexCoordOut = TexCoordIn;
     
     gl_Position = modelViewProjectionMatrix * position;
 }

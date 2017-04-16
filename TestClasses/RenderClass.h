@@ -15,10 +15,13 @@
     GLuint _sizeVertices, _indicesNum;
     GLKMatrix3 _normalMatrix;
     GLKMatrix4 _modelProjection;
+    GLuint _texture;
     @public
     GLuint _vertexArray;
     GLuint _vertexBuffer[1];
 }
+
+- (id) init : (GLuint) texture;
 
 #pragma mark - Getters
 - (GLfloat*) getVertices;
@@ -26,6 +29,7 @@
 - (GLKMatrix4) getModelProjection;
 - (GLuint) getSizeOfVertices;
 - (GLuint) getIndicesNum;
+- (GLuint) getTexture;
 
 #pragma mark - Setters
 - (void) setVertices : (GLfloat*) verts;

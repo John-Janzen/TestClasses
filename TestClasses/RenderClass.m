@@ -11,6 +11,14 @@
 
 @implementation RenderClass
 
+- (id) init: (GLuint)texture {
+    self = [super init];
+    if (self) {
+        _texture = texture;
+    }
+    return self;
+}
+
 #pragma mark - Getters
 - (GLfloat*) getVertices {
     return _vertices;
@@ -30,6 +38,10 @@
 
 - (GLuint) getIndicesNum {
     return _indicesNum;
+}
+
+- (GLuint) getTexture {
+    return _texture;
 }
 
 #pragma mark - Setters
