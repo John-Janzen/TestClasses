@@ -20,6 +20,7 @@
     float _rotation, _direction;
 }
 
+- (id) init : (NSString*) name : (GLKVector3) pos : (GLKVector3) rot : (GLKVector3) scale : (NSMutableArray*) array;
 - (void) update : (GLKMatrix4) projection : (GLKMatrix4) baseModelView : (float) time : (GLKMatrix4) matrix;
 - (void) setupArrays;
 - (void) initializeModelView;

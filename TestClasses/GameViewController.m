@@ -157,14 +157,19 @@ enum
                                                                        : [objImport customStringFromFile:@"characterrightwing" :@"obj"]
                                                                        : objImport->_faces.count * 10 : objImport->_faces.count]
                                            : nil]];
-    [GameWorldObjects addObject:[[Model alloc] init : @"CharacterBody"
-                                                   : GLKVector3Make(0.0f, 0.0f, 0.0f)
-                                                   : GLKVector3Make(M_PI_2, 0.0f, 0.0f)
-                                                   : GLKVector3Make(1.0f, 1.0f, 1.0f)
-                                                   : [[RenderClass alloc] init: [textureLoader loadTexture:@"characterbody.jpg"]
-                                                                              : [objImport customStringFromFile:@"characterbody" :@"obj"]
-                                                                              : objImport->_faces.count * 10 : objImport->_faces.count]
-                                                   : objects]];
+    [objects addObject:[[Model alloc] init : @"CharacterBody"
+                                           : GLKVector3Make(0.0f, 0.0f, 0.0f)
+                                           : GLKVector3Make(0.0f, 0.0f, 0.0f)
+                                           : GLKVector3Make(1.0f, 1.0f, 1.0f)
+                                           : [[RenderClass alloc] init: [textureLoader loadTexture:@"characterbody.jpg"]
+                                                                      : [objImport customStringFromFile:@"characterbody" :@"obj"]
+                                                                      : objImport->_faces.count * 10 : objImport->_faces.count]
+                                           : nil]];
+    [GameWorldObjects addObject:[[GameObject alloc] init : @"GlobalCharacter"
+                                                         : GLKVector3Make(0.0f, 0.0f, 0.0f)
+                                                         : GLKVector3Make(M_PI_2, 0.0f, 0.0f)
+                                                         : GLKVector3Make(1.0f, 1.0f, 1.0f)
+                                                         : objects]];
     
     for (GameObject *object in GameWorldObjects) {
         [object setupArrays];

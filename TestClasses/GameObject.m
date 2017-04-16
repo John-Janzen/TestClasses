@@ -39,6 +39,22 @@
 }
 
 // Public Methods in Header File
+
+- (id) init : (NSString*) name : (GLKVector3) pos : (GLKVector3) rot : (GLKVector3) scale : (NSMutableArray*) array {
+    self = [super init];
+    if (self) {
+        _ID = name;
+        _pos = pos;
+        _rot = rot;
+        _scale = scale;
+        [self initializeModelView];
+        _renderer = nil;
+        _childGameObjects = array;
+        
+    }
+    return self;
+}
+
 - (void) update : (GLKMatrix4) projection : (GLKMatrix4) baseModelView : (float) time : (GLKMatrix4) matrix {
     [self initializeModelView];
     if ([_ID isEqualToString:@"RightWing"]) {
